@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const params = new URLSearchParams(request.url.split('?')[1] || ''); // Get query params
+  const params = new URLSearchParams(window.location.search); // Get query params
   const sessionToken = params.get('token') || '';
 
   return (
