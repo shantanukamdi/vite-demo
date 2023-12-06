@@ -16,6 +16,10 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
+        <button onClick={() => {
+          window.parent.postMessage('callParentMethod'); 
+        }}>Call parent method</button>
       </div>
       <div>
         {JSON.stringify(sessionToken)}
