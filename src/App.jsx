@@ -18,6 +18,7 @@ function App() {
         </button>
 
         <button onClick={() => {
+          console.log('calling parent method');
           window.parent.postMessage('callParentMethod'); 
         }}>Call parent method</button>
       </div>
