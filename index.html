@@ -15,6 +15,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M3GL8V57');</script>
 <!-- End Google Tag Manager -->
+
+  <script>
+window.dataLayer = window.dataLayer || new Proxy([], {
+  // Proxy handler
+  set: (obj, prop, value) => {
+    if (prop !== 'length') {
+      const pushEvent = new CustomEvent('datalayerpush', {
+        detail: value
+      });
+
+      window.dispatchEvent(pushEvent);
+    }
+
+    return Reflect.set(obj, prop, value);
+  }
+});
+
+    window.addEventListener('datalayerpush', event => {
+  console.log(`Value pushed to dataLayer: ${JSON.stringify(event.detail, null, 2)}`);
+});
+
+window.dataLayer.push({
+  event: 'test'
+});
+  </script>
   
 </head>
 
