@@ -8,6 +8,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Choice Demo Vite</title>
 
+  /**
+   * CMP Push default consents to dataLayer variable
+   * 
+   */
+  function dlSend_defaultConsents() {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() {
+      if (window.dataLayer) {
+        /* eslint-disable prefer-rest-params */
+        window.dataLayer.push(arguments);
+      }
+    };
+    
+    window.gtag('consent', 'default', {
+      'ad_storage': {{InmobiChoice - Default - ad_storage}} || 'denied',
+      'ad_user_data': {{InmobiChoice - Default - ad_user_data}} || 'denied',
+      'ad_personalization': {{InmobiChoice - Default - ad_personalization}} || 'denied',
+      'analytics_storage': {{InmobiChoice - Default - analytics_storage}} || 'denied',
+      'functionality_storage': {{InmobiChoice - Default - functionality_storage}} || 'denied',
+      'personalization_storage': {{InmobiChoice - Default - personalization_storage}} || 'denied',
+      'security_storage': {{InmobiChoice - Default - security_storage}} || 'denied'
+    });
+  }
+
+  dlSend_defaultConsents();
+
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
